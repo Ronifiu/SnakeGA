@@ -3,11 +3,11 @@
 
 using namespace std;
 
-Snake::Snake(int cols, int rows) : cols(cols), rows(rows) {
-    tail_length = 2;
+Snake::Snake(int cols, int rows, Fruit &fruit) : cols(cols), rows(rows), fruit(fruit) {
+    tail_length = 0;
     position.first = cols/2;
     position.second = rows/2;
-    direction = Direction::UP;
+    direction = Direction::RIGHT;
 }
 
 void Snake::draw() {
@@ -51,3 +51,13 @@ void Snake::growTail() {
 deque<pair<int, int>> Snake::getBody() {return body;}
 
 pair<int, int> Snake::getPosition() {return position;}
+
+void Snake::update_fitness(bool fruit_eaten) {}
+
+void Snake::reset() {
+    tail_length = 0;
+    position.first = cols/2;
+    position.second = rows/2;
+    body.clear();
+    direction = Direction::RIGHT;
+}

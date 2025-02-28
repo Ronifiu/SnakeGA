@@ -2,7 +2,8 @@
 
 using namespace std;
 
-Game::Game(int cols, int rows) : running(true), board(cols, rows), cols(cols), rows(rows) {
+Game::Game(int cols, int rows, Snake &snake, Fruit &fruit)
+    : running(true), board(cols, rows, snake, fruit), cols(cols), rows(rows), snake(snake), fruit(fruit) {
     SCREEN_WIDTH = cols * 40;
     SCREEN_HEIGHT = rows * 40;
 }

@@ -6,22 +6,27 @@
 #include <vector>
 #include <deque>
 
+#include "fruit.h"
+
 enum class Direction {UP, DOWN, LEFT, RIGHT};
 
 class Snake {
-private:
+protected:
+    Fruit &fruit;
+    int cols, rows;
+    int tail_length;
     std::pair<int, int> position;
     std::deque<std::pair<int, int>> body;
-    int cols, rows;
     Direction direction;
-    int tail_length;
 public:
-    Snake(int cols, int rows);
+    Snake(int cols, int rows, Fruit &fruit);
 
     void draw();
-    void update();
-    void handle_input();
+    virtual void update();
+    virtual void handle_input();
+    virtual void update_fitness(bool fruit_eaten);
     void growTail();
+    virtual void reset();
     std::deque<std::pair<int, int>> getBody();
     std::pair<int, int> getPosition();
 };
