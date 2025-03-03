@@ -8,7 +8,7 @@ public:
     NeuralNetwork nn;
     double fitness = 0.0;
 
-    Agent(int cols, int rows, Fruit &fruit, int input_site, int hidden_size, int output_size);
+    Agent(int cols, int rows, Fruit &fruit, int input_size, int hidden_size, int output_size);
 
     void handle_input() override;
     void update_fitness(bool fruit_eaten) override;

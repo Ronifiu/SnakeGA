@@ -58,7 +58,7 @@ double Agent::is_obstacle(int x, int y) {
 }
 
 void Agent::reset() {
-    tail_length = 0;
+    tail_length = 6;
     position.first = cols/2;
     position.second = rows/2;
     direction = Direction::RIGHT;
