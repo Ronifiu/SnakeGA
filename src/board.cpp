@@ -4,6 +4,7 @@ using namespace std;
 
 Board::Board(int cols, int rows, Snake& snake, Fruit& fruit) : cols(cols), rows(rows), fruit(fruit), snake(snake) {
     CELLWIDTH = 40;
+    steps = 0;
     gameOver = false;
     grid = vector<vector<CellType>>(cols, vector<CellType>(rows, CellType::EMPTY));
     placeFruit();
@@ -25,18 +26,27 @@ void Board::handle_input() {
 }
 
 void Board::update() {
+    /*
     if (gameOver) {
         reset();
         return;
     }
-    updateGrid();
+    */
+    //updateGrid();
     bool fruit_eaten = snake.getPosition() == fruit.getPosition();
     if (fruit_eaten) {
         placeFruit();
         snake.growTail();
+        // steps = 0;
+        steps_without_eating += 100;
     }
     snake.update();
     snake.update_fitness(fruit_eaten);
+    if (steps > steps_without_eating) {
+        snake.terminate();
+        gameOver = true;
+    }
+    steps++;
 }
 
 void Board::updateGrid() {
@@ -79,8 +89,11 @@ void Board::check_collision() {
 }
 
 void Board::reset() {
+    steps = 0;
     grid = vector<vector<CellType>>(cols, vector<CellType>(rows, CellType::EMPTY));
     placeFruit();
     snake.reset();
     gameOver = false;
 }
+
+bool Board::getGameOver() {return gameOver;}

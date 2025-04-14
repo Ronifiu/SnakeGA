@@ -5,3 +5,4 @@
 #include <ctime>
 
 #include "game.h"
+#include "simulation.h"

@@ -37,7 +37,7 @@ vector<double> NeuralNetwork::matrixMultiply(const vector<double>& input, const 
     vector<double> output(weights[0].size(), 0.0);
     for (size_t j = 0; j < weights[0].size(); j++) {
         for (size_t i = 0; i < input.size(); i++) {
-            output[j] = input[i] * weights[i][j];
+            output[j] += input[i] * weights[i][j];
         }
         output[j] += bias[j];
     }

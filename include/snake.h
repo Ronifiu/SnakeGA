@@ -12,14 +12,15 @@ enum class Direction {UP, DOWN, LEFT, RIGHT};
 
 class Snake {
 protected:
-    Fruit &fruit;
     int cols, rows;
     int tail_length;
     std::pair<int, int> position;
     std::deque<std::pair<int, int>> body;
     Direction direction;
 public:
-    Snake(int cols, int rows, Fruit &fruit);
+    Fruit fruit;
+
+    Snake(int cols, int rows, Fruit fruit);
 
     void draw();
     virtual void update();
@@ -29,4 +30,5 @@ public:
     virtual void reset();
     std::deque<std::pair<int, int>> getBody();
     std::pair<int, int> getPosition();
+    virtual void terminate();
 };

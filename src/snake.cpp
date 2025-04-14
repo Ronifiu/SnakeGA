@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Snake::Snake(int cols, int rows, Fruit &fruit) : cols(cols), rows(rows), fruit(fruit) {
+Snake::Snake(int cols, int rows, Fruit fruit) : cols(cols), rows(rows), fruit(fruit) {
     tail_length = 0;
     position.first = cols/2;
     position.second = rows/2;
@@ -61,3 +61,5 @@ void Snake::reset() {
     body.clear();
     direction = Direction::RIGHT;
 }
+
+void Snake::terminate() {}

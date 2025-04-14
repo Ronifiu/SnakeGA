@@ -11,14 +11,13 @@
 class Game {
 private:
     Board board;
-    Snake& snake;
-    Fruit fruit;
     int cols, rows;
     int SCREEN_WIDTH, SCREEN_HEIGHT;
     bool running;
+    bool display_mode;
 
 public:
-    Game(const int cols, const int rows, Snake& snake, Fruit& fruit);
+    Game(const int cols, const int rows, Snake& snake, Fruit& fruit, bool display_mode);
 
     void draw();
     void update();

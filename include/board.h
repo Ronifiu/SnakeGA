@@ -15,6 +15,8 @@ private:
     Fruit fruit;
     std::vector<std::vector<CellType>> grid;
     bool gameOver;
+    int steps;
+    int steps_without_eating = 400;
 public:
     int cols, rows;
     int CELLWIDTH;
@@ -28,4 +30,5 @@ public:
     void updateGrid();
     void placeFruit();
     void reset();
+    bool getGameOver();
 };
